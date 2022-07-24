@@ -3,6 +3,7 @@ package com.test.moviedb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.test.moviedb.Constants.FRAGMENT_MOVIE_LIST
 import com.test.moviedb.listeners.OnFragmentInteractionListener
 import com.test.moviedb.viewmodel.CommonViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,6 +15,11 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        SharedPref.init(this)
+
+
+        replaceFragment(MovieListFragment.newInstance(), FRAGMENT_MOVIE_LIST)
+
     }
 
     override fun replaceFragment(fragment: Fragment, tag: String, isAddToStack: Boolean) {
@@ -22,7 +28,6 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
                 this.addToBackStack(tag)
             else
                 isFirst = false
-//            }
             replace(container.id, fragment, tag).commit()
         }
     }
