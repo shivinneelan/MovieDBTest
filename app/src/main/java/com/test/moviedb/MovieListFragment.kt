@@ -91,11 +91,11 @@ class MovieListFragment : BaseFragment(), ItemClickListener {
     @DelicateCoroutinesApi
     private fun loadMovieList() {
         Log.d("TEST_S", "loadMovieList")
-        val quotesApi = RetrofitHelper.getInstance().create(Api::class.java)
+        val api = RetrofitHelper.getInstance().create(Api::class.java)
         // launching a new coroutine
         GlobalScope.launch {
             try {
-                val result = quotesApi.getMovieList("1")
+                val result = api.getMovieList("1")
                 Log.d("TEST_S", "Result : ")
                 if(result.data.isNotEmpty()){
                     viewModel.insertMovieList(result.data)

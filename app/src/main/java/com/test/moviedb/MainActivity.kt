@@ -15,10 +15,8 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        SharedPref.init(this)
 
-
-        replaceFragment(MovieListFragment.newInstance(), FRAGMENT_MOVIE_LIST)
+        replaceFragment(MoviePagingListFragment.newInstance(), FRAGMENT_MOVIE_LIST)
 
     }
 
