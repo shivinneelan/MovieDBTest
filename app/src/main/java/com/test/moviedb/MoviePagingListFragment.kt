@@ -35,7 +35,7 @@ class MoviePagingListFragment : BaseFragment(), ItemClickListener {
 
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
-        val moviePagingAdapter = MoviePagingAdapter()
+        val moviePagingAdapter = MoviePagingAdapter(this)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.setHasFixedSize(true)
 

@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.test.moviedb.databinding.MovieListItemBinding
+import com.test.moviedb.listeners.ItemClickListener
 import com.test.moviedb.room.model.MovieTable
 
 
-class MoviePagingAdapter :
+class MoviePagingAdapter(    private val listener: ItemClickListener
+) :
     PagingDataAdapter<MovieTable, MoviePagingAdapter.PassengersViewHolder>(PassengersComparator) {
 
     override fun onCreateViewHolder(
@@ -37,6 +39,10 @@ class MoviePagingAdapter :
             txtDescription.text = item.email
 
             imgProfile.loadImage(item.avatar)
+
+            cardView.setOnClickListener{
+                listener.onItemClick(item)
+            }
         }
     }
 
