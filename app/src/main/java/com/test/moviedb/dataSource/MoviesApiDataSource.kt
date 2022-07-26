@@ -1,22 +1,27 @@
-package com.test.moviedb.DataSource
+package com.test.moviedb.dataSource
 
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.test.moviedb.api.Api
 import com.test.moviedb.api.RetrofitHelper
+import com.test.moviedb.room.DbDao
+import com.test.moviedb.room.RoomDataBase
 import com.test.moviedb.room.model.MovieTable
 
-class MoviesDataSource(
+class MoviesApiDataSource(
+    private val dao: DbDao
 ) : PagingSource<Int, MovieTable>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieTable> {
         return try {
             val nextPageNumber = params.key ?: 1
-            Log.d("TEST_S", "Page : $nextPageNumber")
+            Log.d("TEST_S", "api Page : $nextPageNumber")
             val api = RetrofitHelper.getInstance().create(Api::class.java)
-
             val response = api.getMovieList(nextPageNumber.toString())
+            Log.d("TEST_S", "api size : ${response.data.size}")
+
+            dao.insertMovieList(response.data)
             LoadResult.Page(
                 data = response.data,
                 prevKey = if (nextPageNumber > 1) nextPageNumber - 1 else null,

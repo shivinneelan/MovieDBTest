@@ -1,4 +1,5 @@
 package com.test.moviedb.adapter
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,7 +12,8 @@ import com.test.moviedb.listeners.ItemClickListener
 import com.test.moviedb.room.model.MovieTable
 
 
-class MoviePagingAdapter(    private val listener: ItemClickListener
+class MoviePagingAdapter(
+    private val listener: ItemClickListener
 ) :
     PagingDataAdapter<MovieTable, MoviePagingAdapter.PassengersViewHolder>(PassengersComparator) {
 
@@ -40,7 +42,7 @@ class MoviePagingAdapter(    private val listener: ItemClickListener
 
             imgProfile.loadImage(item.avatar)
 
-            cardView.setOnClickListener{
+            cardView.setOnClickListener {
                 listener.onItemClick(item)
             }
         }

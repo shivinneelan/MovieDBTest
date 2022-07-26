@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 @Entity(tableName = "movieTable")
 data class MovieTable(
-    @PrimaryKey(autoGenerate = true) var id: Int = 0,
+    @PrimaryKey var id: Int = 0,
     var first_name: String,
     var email: String,
     var avatar: String,

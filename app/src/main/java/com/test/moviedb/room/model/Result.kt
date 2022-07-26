@@ -4,15 +4,15 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Result(
-    var status: String?=null,
-    var message: String?=null,
+    var status: String? = null,
+    var message: String? = null,
 
-) : Parcelable {
+    ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
 
-    )
+        )
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
