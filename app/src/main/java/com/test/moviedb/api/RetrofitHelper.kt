@@ -5,11 +5,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-
 object RetrofitHelper {
 
     private const val BASE_URL = "https://reqres.in/"
-    private const val API= BASE_URL +"api/"
+    private const val API = BASE_URL + "api/"
 
 
     fun getInstance(): Retrofit {

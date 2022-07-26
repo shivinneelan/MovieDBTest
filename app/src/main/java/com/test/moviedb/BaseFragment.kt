@@ -10,11 +10,6 @@ import com.test.moviedb.listeners.OnFragmentInteractionListener
 open class BaseFragment : Fragment() {
     lateinit var listener: OnFragmentInteractionListener
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {

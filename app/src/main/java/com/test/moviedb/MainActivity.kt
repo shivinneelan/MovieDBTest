@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.test.moviedb.Constants.FRAGMENT_MOVIE_LIST
 import com.test.moviedb.listeners.OnFragmentInteractionListener
-import com.test.moviedb.viewmodel.CommonViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
