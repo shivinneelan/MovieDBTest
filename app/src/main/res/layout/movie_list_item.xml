@@ -54,5 +54,17 @@
             app:layout_constraintTop_toBottomOf="@id/txtMovieName"
             tools:ignore="SmallSp" />
 
+        <TextView
+            android:id="@+id/txtId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDescription"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="ID"
+            app:layout_constraintStart_toStartOf="@+id/txtDescription"
+            app:layout_constraintTop_toBottomOf="@id/txtDescription"
+            tools:ignore="SmallSp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

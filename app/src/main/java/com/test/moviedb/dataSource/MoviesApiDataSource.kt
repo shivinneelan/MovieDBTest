@@ -6,7 +6,6 @@ import androidx.paging.PagingState
 import com.test.moviedb.api.Api
 import com.test.moviedb.api.RetrofitHelper
 import com.test.moviedb.room.DbDao
-import com.test.moviedb.room.RoomDataBase
 import com.test.moviedb.room.model.MovieTable
 
 class MoviesApiDataSource(
@@ -18,14 +17,20 @@ class MoviesApiDataSource(
             val nextPageNumber = params.key ?: 1
             Log.d("TEST_S", "api Page : $nextPageNumber")
             val api = RetrofitHelper.getInstance().create(Api::class.java)
-            val response = api.getMovieList(nextPageNumber.toString())
+            val response = api.getMovieList(nextPageNumber.toString(),"10")
             Log.d("TEST_S", "api size : ${response.data.size}")
 
-            dao.insertMovieList(response.data)
+            try {
+                dao.insertMovieList(response.data)
+
+            }catch (e: java.lang.Exception){
+                e.printStackTrace()
+                e.message?.let { Log.d("TEST_S", it) }
+            }
             LoadResult.Page(
                 data = response.data,
                 prevKey = if (nextPageNumber > 1) nextPageNumber - 1 else null,
-                nextKey = if (nextPageNumber < response.total_pages) nextPageNumber + 1 else null
+                nextKey = if (nextPageNumber < response.totalPages) nextPageNumber + 1 else null
             )
         } catch (e: Exception) {
             LoadResult.Error(e)

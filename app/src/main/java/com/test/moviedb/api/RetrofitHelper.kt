@@ -7,8 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
 
-    private const val BASE_URL = "https://reqres.in/"
-    private const val API = BASE_URL + "api/"
+    private const val API = "https://api.instantwebtools.net/v1/"
 
 
     fun getInstance(): Retrofit {

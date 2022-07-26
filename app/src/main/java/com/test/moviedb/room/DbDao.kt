@@ -18,7 +18,7 @@ interface DbDao {
     suspend fun getMovieList(): List<MovieTable>
 
 
-    @Query("SELECT * FROM movieTable ORDER BY id ASC LIMIT :limit OFFSET :offset")
+    @Query("SELECT * FROM movieTable ORDER BY _id ASC LIMIT :limit OFFSET :offset")
     suspend fun getPagedList(limit: Int, offset: Int): List<MovieTable>
 
 }

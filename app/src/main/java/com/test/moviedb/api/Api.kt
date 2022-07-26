@@ -8,7 +8,7 @@ import retrofit2.http.GET
 interface Api {
 
 
-    @GET("users")
-    suspend fun getMovieList(@Query("page") page: String): MovieRequest
+    @GET("passenger")
+    suspend fun getMovieList(@Query("page") page: String, @Query("size") size: String): MovieRequest
 
 }

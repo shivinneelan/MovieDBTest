@@ -37,10 +37,14 @@ class MoviePagingAdapter(
     inner class PassengersViewHolder(private val binding: MovieListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindPassenger(item: MovieTable) = with(binding) {
-            txtMovieName.text = item.first_name
-            txtDescription.text = item.email
+            txtMovieName.text = item.name
+            txtDescription.text = item.trips
+            txtId.text = item._id
 
-            imgProfile.loadImage(item.avatar)
+//            if(!item.avatar.isNullOrEmpty())
+//                imgProfile.loadImage(item.avatar)
+//            else
+                imgProfile.loadImage("https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Singapore_Airlines_Logo_2.svg/250px-Singapore_Airlines_Logo_2.svg.png")
 
             cardView.setOnClickListener {
                 listener.onItemClick(item)
@@ -50,7 +54,7 @@ class MoviePagingAdapter(
 
     object PassengersComparator : DiffUtil.ItemCallback<MovieTable>() {
         override fun areItemsTheSame(oldItem: MovieTable, newItem: MovieTable): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(oldItem: MovieTable, newItem: MovieTable): Boolean {

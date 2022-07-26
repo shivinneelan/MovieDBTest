@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.test.moviedb.room.model.MovieTable
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.movie_list_item.view.*
 
 private const val MOVIE_DATA = "movieData"
 
@@ -34,15 +34,18 @@ class MovieDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         data?.let {
-            tvName.text = it.first_name
-            tvDescription.text = it.email
-            if (it.avatar.isNotEmpty()) {
-                Glide.with(this)
-                    .load(it.avatar)
-                    .into(ivImageView)
-            } else {
-                ivImageView.setImageResource(R.drawable.ic_launcher_background)
-            }
+            tvName.text = it.name
+            tvDescription.text = it.trips
+//            if (it.avatar.isNotEmpty()) {
+//                Glide.with(this)
+//                    .load(it.avatar)
+//                    .into(ivImageView)
+//            } else {
+//                ivImageView.setImageResource(R.drawable.ic_launcher_background)
+//            }
+
+            ivImageView.loadImage("https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Singapore_Airlines_Logo_2.svg/250px-Singapore_Airlines_Logo_2.svg.png")
+
         }
 
     }
@@ -55,5 +58,11 @@ class MovieDetailFragment : Fragment() {
                     putParcelable(MOVIE_DATA, data)
                 }
             }
+    }
+
+    private fun ImageView.loadImage(url: String) {
+        Glide.with(this)
+            .load(url)
+            .into(this)
     }
 }
